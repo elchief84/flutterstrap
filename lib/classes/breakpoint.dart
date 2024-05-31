@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 /// [Breakpoint] Define layout breakpoints
 /// extraSmall        <576px
@@ -57,13 +58,13 @@ class BreakpointHelper {
 
   static int getBreakpointIndex(Breakpoint breakpoint) {
     switch(breakpoint) {
-      case Breakpoint.xs: 0;
-      case Breakpoint.sm: 1;
-      case Breakpoint.md: 2;
-      case Breakpoint.lg: 3;
-      case Breakpoint.xl: 4;
-      case Breakpoint.xxl: 5;
-      default: 0;
+      case Breakpoint.xs: return 0;
+      case Breakpoint.sm: return 1;
+      case Breakpoint.md: return 2;
+      case Breakpoint.lg: return 3;
+      case Breakpoint.xl: return 4;
+      case Breakpoint.xxl: return 5;
+      default: return 0;
     }
     return 0;
   }
@@ -100,21 +101,26 @@ class Breakpoints {
   }
 
   int get colXs { return _colXs ?? _getMinCols(Breakpoint.xs) ?? 12; }
-  int get colSm { return _colXs ?? _getMinCols(Breakpoint.sm) ?? 12; }
-  int get colMd { return _colXs ?? _getMinCols(Breakpoint.md) ?? 6; }
-  int get colLg { return _colXs ?? _getMinCols(Breakpoint.lg) ?? 6; }
-  int get colXl { return _colXs ?? _getMinCols(Breakpoint.xl) ?? 3; }
-  int get colXxl { return _colXs ?? _getMinCols(Breakpoint.xxl) ?? 3; }
+  int get colSm { return _colSm ?? _getMinCols(Breakpoint.sm) ?? 12; }
+  int get colMd { return _colMd ?? _getMinCols(Breakpoint.md) ?? 6; }
+  int get colLg { return _colLg ?? _getMinCols(Breakpoint.lg) ?? 6; }
+  int get colXl { return _colXl ?? _getMinCols(Breakpoint.xl) ?? 3; }
+  int get colXxl { return _colXxl ?? _getMinCols(Breakpoint.xxl) ?? 3; }
 
   int? _getMinCols(Breakpoint ref) {
     int breakpointIndex = BreakpointHelper.getBreakpointIndex(ref);
-    final list = [_colXs, _colSm, _colMd, _colLg, _colXl, _colXxl]
-        .whereType<int>()
-        .toList();
+    final List<int?> list = [_colXs, _colSm, _colMd, _colLg, _colXl, _colXxl];
 
     if(list.isNotEmpty){
-      list.removeRange(breakpointIndex, list.length);
-      return list.reduce((curr, next) => curr > next? curr: next);
+      List<int?> calculatedCols = [];
+      int? lastValue;
+      list.reversed.toList().forEach((element) {
+        lastValue = element ?? lastValue;
+        calculatedCols.add(lastValue);
+      });
+      calculatedCols = calculatedCols.reversed.toList();
+
+      return calculatedCols[breakpointIndex];
     }
 
     return null;
