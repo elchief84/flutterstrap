@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 /// [Breakpoint] Define layout breakpoints
@@ -9,18 +7,10 @@ import 'package:flutter/material.dart';
 /// large             ≥992px
 /// extraLarge        ≥1200px
 /// extraExtraLarge   ≥1400px
-enum Breakpoint {
-  xs,
-  sm,
-  md,
-  lg,
-  xl,
-  xxl
-}
+enum Breakpoint { xs, sm, md, lg, xl, xxl }
 
 /// Helpers methods to get info about [Breakpoint]
 class BreakpointHelper {
-
   /// List of [Breakpoint] width ranges
   static const List<BreakpointSize> _range = [
     BreakpointSize(min: 0, max: 575),
@@ -38,35 +28,48 @@ class BreakpointHelper {
 
     var index = 0;
     for (var element in _range) {
-      if(screenSize.width >= element.min && screenSize.width <= element.max) {
+      if (screenSize.width >= element.min && screenSize.width <= element.max) {
         break;
       }
-      index ++;
+      index++;
     }
-    switch(index) {
-      case 0: return Breakpoint.xs;
-      case 1: return Breakpoint.sm;
-      case 2: return Breakpoint.md;
-      case 3: return Breakpoint.lg;
-      case 4: return Breakpoint.xl;
-      case 5: return Breakpoint.xxl;
-      default: Breakpoint.md;
+    switch (index) {
+      case 0:
+        return Breakpoint.xs;
+      case 1:
+        return Breakpoint.sm;
+      case 2:
+        return Breakpoint.md;
+      case 3:
+        return Breakpoint.lg;
+      case 4:
+        return Breakpoint.xl;
+      case 5:
+        return Breakpoint.xxl;
+      default:
+        Breakpoint.md;
     }
 
     return Breakpoint.md; // as fallback
   }
 
   static int getBreakpointIndex(Breakpoint breakpoint) {
-    switch(breakpoint) {
-      case Breakpoint.xs: return 0;
-      case Breakpoint.sm: return 1;
-      case Breakpoint.md: return 2;
-      case Breakpoint.lg: return 3;
-      case Breakpoint.xl: return 4;
-      case Breakpoint.xxl: return 5;
-      default: return 0;
+    switch (breakpoint) {
+      case Breakpoint.xs:
+        return 0;
+      case Breakpoint.sm:
+        return 1;
+      case Breakpoint.md:
+        return 2;
+      case Breakpoint.lg:
+        return 3;
+      case Breakpoint.xl:
+        return 4;
+      case Breakpoint.xxl:
+        return 5;
+      default:
+        return 0;
     }
-    return 0;
   }
 }
 
@@ -89,9 +92,21 @@ class BreakpointSize {
 /// - Optional [colXl] default 3 columns
 /// - Optional [colXxl] default 3 columns
 class Breakpoints {
-  int? _colXs; int? _colSm; int? _colMd; int? _colLg; int? _colXl; int? _colXxl;
+  int? _colXs;
+  int? _colSm;
+  int? _colMd;
+  int? _colLg;
+  int? _colXl;
+  int? _colXxl;
 
-  Breakpoints({int? colXs, int? colSm, int? colMd, int? colLg, int? colXl, int? colXxl,}) {
+  Breakpoints({
+    int? colXs,
+    int? colSm,
+    int? colMd,
+    int? colLg,
+    int? colXl,
+    int? colXxl,
+  }) {
     _colXs = colXs;
     _colSm = colSm;
     _colMd = colMd;
@@ -100,18 +115,35 @@ class Breakpoints {
     _colXxl = colXxl;
   }
 
-  int get colXs { return _colXs ?? _getMinCols(Breakpoint.xs) ?? 12; }
-  int get colSm { return _colSm ?? _getMinCols(Breakpoint.sm) ?? 12; }
-  int get colMd { return _colMd ?? _getMinCols(Breakpoint.md) ?? 6; }
-  int get colLg { return _colLg ?? _getMinCols(Breakpoint.lg) ?? 6; }
-  int get colXl { return _colXl ?? _getMinCols(Breakpoint.xl) ?? 3; }
-  int get colXxl { return _colXxl ?? _getMinCols(Breakpoint.xxl) ?? 3; }
+  int get colXs {
+    return _colXs ?? _getMinCols(Breakpoint.xs) ?? 12;
+  }
+
+  int get colSm {
+    return _colSm ?? _getMinCols(Breakpoint.sm) ?? 12;
+  }
+
+  int get colMd {
+    return _colMd ?? _getMinCols(Breakpoint.md) ?? 6;
+  }
+
+  int get colLg {
+    return _colLg ?? _getMinCols(Breakpoint.lg) ?? 6;
+  }
+
+  int get colXl {
+    return _colXl ?? _getMinCols(Breakpoint.xl) ?? 3;
+  }
+
+  int get colXxl {
+    return _colXxl ?? _getMinCols(Breakpoint.xxl) ?? 3;
+  }
 
   int? _getMinCols(Breakpoint ref) {
     int breakpointIndex = BreakpointHelper.getBreakpointIndex(ref);
     final List<int?> list = [_colXs, _colSm, _colMd, _colLg, _colXl, _colXxl];
 
-    if(list.isNotEmpty){
+    if (list.isNotEmpty) {
       List<int?> calculatedCols = [];
       int? lastValue;
       list.reversed.toList().forEach((element) {

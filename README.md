@@ -1,39 +1,86 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+# Responsive Container
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+**responsive_container** is a package to create responsive layouts in flutter projects.
+Thinked to handle responsive layouts in Flutter web projects, it works for any platform.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+**Inspired to [Bootstrap](https://getbootstrap.com) framework**
 
-## Features
+Try at [demo on DartPad](https://dartpad.dev/?id=adc568d0883ec002c51c25945649391a)
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Getting Started
+Follow these steps to use this package
 
-## Getting started
+### Add dependency
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml  
+dependencies:  
+	responsive_container: ^1.0.0  
+```  
 
-## Usage
+### Add import package
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+```dart  
+import 'package:responsive_container/responsive_container.dart';  
+```  
 
-```dart
-const like = 'sample';
-```
+### Easy to use
+Simple example of use ResponsiveContainer
+Put this code in your project and learn how it works 😊
 
-## Additional information
+```dart  
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveContainer(children: [
+      ResponsiveColumn(
+        child: const Card(child: Center(child: Text('box 1'))),
+      ),
+      ResponsiveColumn(
+        child: const Card(child: Center(child: Text('box 2'))),
+      ),
+      ResponsiveColumn(
+        child: const Card(child: Center(child: Text('box 3'))),
+      ),
+      ResponsiveColumn(
+        child: const Card(child: Center(child: Text('box 4'))),
+      ),
+    ]);
+  }
+```  
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+#### ResponsiveContainer
+ResponsiveContainer is the basic layout element.
+Default grid system is setted to 12 columns but you can override cols number using **layoutColumns** parameter.
+You can also modify **mode** parameter to choose container width:
+* Use ContainerMode.container to set max-width at each responsive breakpoint;
+* Use ContainerMode.containerFluid set width at 100% at each breakpoints.
+
+##### ContainerMode.container  breakpoint width size
+|	xs 		 |	sm		  |	md		   |	lg		    |	xl		    |	xxl			|
+|-----------|-----------|-----------|-----------|-----------|-------------|		
+|	100% 	|	540px	|	720px	|	960px	|	1140px	|	1320px	|	
+
+
+Default breakpoint sizes for every ResponsiveColumn are:
+| breakpoint 			| identifier 	| columns 	|
+|-----------------------|---------------|-----------|
+| Extra Small			| xs 			| 12 		|
+| Small		 			| sm 			| 12 		|
+| Medium	 			| md 			| 6 		|
+| Large		 			| lg 			| 6 		|
+| Extra Large			| xl 			| 3 		|
+| Extra extra Large 	| xxl 			| 3 		|
+
+Following describing breakpoints:
+| breakpoint 	| dimensions	|
+----------------|---------------|
+| xs 			| <576px		|
+| sm 			| ≥576px 		|
+| md 			| ≥768px 		|
+| lg 			| ≥992px 		|
+| xl 			| ≥1200px 		|
+| xxl 			| ≥1400px 		|
+
+## Contributions
+All contributions are welcome!  
+Contributions are what make the open source community such an amazing place to be learned, inspire, and create. Any contributions you make are greatly appreciated.

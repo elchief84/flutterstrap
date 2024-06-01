@@ -18,7 +18,7 @@ class _PageSampleState extends State<PageSample> {
             ResponsiveContainer(
               children: [
                 ResponsiveColumn(
-                  breakpoints: Breakpoints(colSm: 12, colLg:6, colXxl: 4),
+                  breakpoints: Breakpoints(colSm: 12, colLg: 6, colXxl: 4),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.network('https://picsum.photos/2000?image=10'),
@@ -32,7 +32,7 @@ class _PageSampleState extends State<PageSample> {
                   ),
                 ),
                 ResponsiveColumn(
-                  breakpoints: Breakpoints(colSm: 12, colLg:6, colXxl: 4),
+                  breakpoints: Breakpoints(colSm: 12, colLg: 6, colXxl: 4),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.network('https://picsum.photos/2000?image=30'),
@@ -47,16 +47,17 @@ class _PageSampleState extends State<PageSample> {
                 ),
               ],
             ),
-
             ResponsiveContainer(
               children: [
                 ResponsiveColumn(
-                  breakpoints: Breakpoints(colLg: 12, colXxl: 6),
-                  child: ResponsiveColumn(child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.network('https://picsum.photos/2000?image=1'),
-                  ),)
-                ),
+                    breakpoints: Breakpoints(colLg: 12, colXxl: 6),
+                    child: ResponsiveColumn(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:
+                            Image.network('https://picsum.photos/2000?image=1'),
+                      ),
+                    )),
                 ResponsiveColumn(
                   breakpoints: Breakpoints(colLg: 12, colXxl: 6),
                   child: ResponsiveContainer(
@@ -65,28 +66,32 @@ class _PageSampleState extends State<PageSample> {
                         breakpoints: Breakpoints(colLg: 12, colXxl: 6),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.network('https://picsum.photos/2000?image=10'),
+                          child: Image.network(
+                              'https://picsum.photos/2000?image=10'),
                         ),
                       ),
                       ResponsiveColumn(
                         breakpoints: Breakpoints(colLg: 12, colXxl: 6),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.network('https://picsum.photos/2000?image=20'),
+                          child: Image.network(
+                              'https://picsum.photos/2000?image=20'),
                         ),
                       ),
                       ResponsiveColumn(
                         breakpoints: Breakpoints(colSm: 12, colXxl: 6),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.network('https://picsum.photos/2000?image=30'),
+                          child: Image.network(
+                              'https://picsum.photos/2000?image=30'),
                         ),
                       ),
                       ResponsiveColumn(
                         breakpoints: Breakpoints(colSm: 12, colXxl: 6),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.network('https://picsum.photos/2000?image=40'),
+                          child: Image.network(
+                              'https://picsum.photos/2000?image=40'),
                         ),
                       ),
                     ],
@@ -107,10 +112,10 @@ class ResponsiveItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(child: Padding(
+    return Card(
+        child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(child: Text(title)),
     ));
   }
 }
-
