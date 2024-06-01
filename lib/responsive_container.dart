@@ -35,7 +35,6 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
   @override
   Widget build(BuildContext context) {
     Breakpoint breakpoint = BreakpointHelper.getBreakpoint(context);
-    log('breakpoint: ${breakpoint.name}');
 
     double containerWidth = ContainerModeHelper.getContainerWidth(breakpoint);
 

@@ -14,13 +14,13 @@ Follow these steps to use this package
 ### Add dependency
 
 ```yaml  
-flutterstrap: ^1.0.0  
+flutterstrap_ui: ^1.0.0  
 ```  
 
 ### Add import package
 
 ```dart  
-import 'package:flutterstrap/flutterstrap.dart';  
+import 'package:flutterstrap_ui/flutterstrap.dart';  
 ```  
 
 ### Easy to use
