@@ -12,18 +12,24 @@ export 'classes/container_mode.dart';
 /// - Optional [ContainerMode] mode - default [ContainerMode.containerFluid]
 /// - Optional [int] layoutColumns - default 12
 /// - Optional [Color] color is the background color
+/// - Optional [MainAxisAlignment] mainAxisAlignment
+/// - Optional [CrossAxisAlignment] crossAxisAlignment
 /// - Required [List] children is the list of widget to render into layout
 class ResponsiveContainer extends StatefulWidget {
   final ContainerMode? mode;
   final int? layoutColumns;
   final List<ResponsiveColumn> children;
   final Color? color;
+  final MainAxisAlignment? mainAxisAlignment;
+  final CrossAxisAlignment? crossAxisAlignment;
   const ResponsiveContainer({
     super.key,
     required this.children,
     this.mode = ContainerMode.containerFluid,
     this.layoutColumns = 12,
-    this.color
+    this.color,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.crossAxisAlignment = CrossAxisAlignment.start
   });
 
   @override
@@ -113,10 +119,9 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
         return Container(
           color: widget.color,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: List.generate(rows.length, (index) => Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: widget.mainAxisAlignment ?? MainAxisAlignment.start,
+              crossAxisAlignment: widget.crossAxisAlignment ?? CrossAxisAlignment.start,
               children: List.generate(rows[index].length, (subindex) => SizedBox(
                 width: rows[index][subindex]['size'],
                 child: rows[index][subindex]['child'],
