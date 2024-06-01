@@ -1,8 +1,8 @@
 
-# Responsive Container
+# Flutterstrap
 
-**responsive_container** is a package to create responsive layouts in flutter projects.
-Thinked to handle responsive layouts in Flutter web projects, it works for any platform.
+**Flutterstrap** is a package to create responsive layouts in flutter projects.
+Designed to handle responsive layouts in Flutter web projects, it works for any platform.
 
 **Inspired to [Bootstrap](https://getbootstrap.com) framework**
 
@@ -14,18 +14,17 @@ Follow these steps to use this package
 ### Add dependency
 
 ```yaml  
-dependencies:  
-	responsive_container: ^1.0.0  
+flutterstrap: ^1.0.0  
 ```  
 
 ### Add import package
 
 ```dart  
-import 'package:responsive_container/responsive_container.dart';  
+import 'package:flutterstrap/flutterstrap.dart';  
 ```  
 
 ### Easy to use
-Simple example of use ResponsiveContainer
+Simple example of use Flutterstrap
 Put this code in your project and learn how it works 😊
 
 ```dart  

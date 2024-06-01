@@ -4,10 +4,6 @@ import 'classes/breakpoint.dart';
 import 'classes/container_mode.dart';
 import 'responsive_column.dart';
 
-export 'responsive_column.dart';
-export 'classes/breakpoint.dart';
-export 'classes/container_mode.dart';
-
 /// [ResponsiveContainer] Wrapper widget
 /// - Optional [ContainerMode] mode - default [ContainerMode.containerFluid]
 /// - Optional [int] layoutColumns - default 12

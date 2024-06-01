@@ -1,7 +1,7 @@
-name: responsive_container
+name: flutterstrap
 description: "A Flutter package to create responsive layouts. Designed to handle responsive layouts in Flutter web projects, it works for any platform."
 version: 1.0.0
-homepage: https://github.com/elchief84/responsive_container
+homepage: https://github.com/elchief84/flutterstrap
 
 environment:
   sdk: '>=3.2.5 <4.0.0'
