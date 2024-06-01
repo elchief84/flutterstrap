@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  flutterstrap:
+  flutterstrap_ui:
     path: '../'
 
 dev_dependencies:

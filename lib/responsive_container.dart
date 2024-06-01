@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'classes/breakpoint.dart';
 import 'classes/container_mode.dart';

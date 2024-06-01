@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterstrap/flutterstrap.dart';
+import 'package:flutterstrap_ui/flutterstrap.dart';
 
 class PageSample extends StatefulWidget {
   const PageSample({super.key});

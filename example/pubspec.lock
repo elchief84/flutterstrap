@@ -75,7 +75,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutterstrap:
+  flutterstrap_ui:
     dependency: "direct main"
     description:
       path: ".."
