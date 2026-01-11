@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 
-/// [Breakpoint] Define layout breakpoints
-/// extraSmall        <576px
-/// small             ≥576px
-/// medium            ≥768px
-/// large             ≥992px
-/// extraLarge        ≥1200px
-/// extraExtraLarge   ≥1400px
-enum Breakpoint { xs, sm, md, lg, xl, xxl }
+/// Defines the layout breakpoint based on screen width.
+enum Breakpoint {
+  /// Extra small screens (<576px).
+  xs,
+
+  /// Small screens (>=576px).
+  sm,
+
+  /// Medium screens (>=768px).
+  md,
+
+  /// Large screens (>=992px).
+  lg,
+
+  /// Extra large screens (>=1200px).
+  xl,
+
+  /// Extra extra large screens (>=1400px).
+  xxl
+}
 
 /// Helpers methods to get info about [Breakpoint]
 class BreakpointHelper {
@@ -21,8 +33,8 @@ class BreakpointHelper {
     BreakpointSize(min: 1400, max: double.infinity)
   ];
 
-  /// Return [Breakpoint] based on layout width
-  /// - Require [BuildContext] to access layout size
+  /// Returns the [Breakpoint] based on the current layout width.
+  /// - Requires a [BuildContext] to access layout size.
   static Breakpoint getBreakpoint(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
@@ -47,12 +59,11 @@ class BreakpointHelper {
       case 5:
         return Breakpoint.xxl;
       default:
-        Breakpoint.md;
+        return Breakpoint.md;
     }
-
-    return Breakpoint.md; // as fallback
   }
 
+  /// Returns the index position for the given [breakpoint].
   static int getBreakpointIndex(Breakpoint breakpoint) {
     switch (breakpoint) {
       case Breakpoint.xs:
@@ -73,13 +84,15 @@ class BreakpointHelper {
   }
 }
 
-/// Model [BreakpointSize] define the Breakpoint width range
-/// - Required double [min] is the minumum width of Breakpoint
-/// - Required double [max] is the maximum width of Breakpoint
+/// Defines the width range for a [Breakpoint].
 class BreakpointSize {
+  /// The minimum width for this breakpoint.
   final double min;
+
+  /// The maximum width for this breakpoint.
   final double max;
 
+  /// Creates a breakpoint size range.
   const BreakpointSize({required this.min, required this.max});
 }
 
@@ -99,6 +112,7 @@ class Breakpoints {
   int? _colXl;
   int? _colXxl;
 
+  /// Creates a set of breakpoint column overrides.
   Breakpoints({
     int? colXs,
     int? colSm,
@@ -115,26 +129,32 @@ class Breakpoints {
     _colXxl = colXxl;
   }
 
+  /// Columns for extra small screens.
   int get colXs {
     return _colXs ?? _getMinCols(Breakpoint.xs) ?? 12;
   }
 
+  /// Columns for small screens.
   int get colSm {
     return _colSm ?? _getMinCols(Breakpoint.sm) ?? 12;
   }
 
+  /// Columns for medium screens.
   int get colMd {
     return _colMd ?? _getMinCols(Breakpoint.md) ?? 6;
   }
 
+  /// Columns for large screens.
   int get colLg {
     return _colLg ?? _getMinCols(Breakpoint.lg) ?? 6;
   }
 
+  /// Columns for extra large screens.
   int get colXl {
     return _colXl ?? _getMinCols(Breakpoint.xl) ?? 3;
   }
 
+  /// Columns for extra extra large screens.
   int get colXxl {
     return _colXxl ?? _getMinCols(Breakpoint.xxl) ?? 3;
   }

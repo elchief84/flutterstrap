@@ -1,7 +1,15 @@
 name: flutterstrap_ui
 description: "A Flutter package to create responsive layouts. Designed to handle responsive layouts in Flutter web projects, it works for any platform."
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/elchief84/flutterstrap
+repository: https://github.com/elchief84/flutterstrap
+issue_tracker: https://github.com/elchief84/flutterstrap/issues
+topics:
+  - flutter
+  - responsive
+  - layout
+  - bootstrap
+  - web
 
 environment:
   sdk: '>=3.2.5 <4.0.0'

@@ -1,13 +1,19 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'classes/breakpoint.dart';
 
+/// A column that adapts its width based on the active breakpoint.
 class ResponsiveColumn extends StatefulWidget {
-  final Widget child;
-  final Breakpoints? breakpoints;
+  /// Creates a responsive column with a child and optional breakpoint overrides.
   const ResponsiveColumn({super.key, required this.child, this.breakpoints});
 
+  /// The widget displayed in this column.
+  final Widget child;
+
+  /// Optional breakpoint overrides for this column.
+  final Breakpoints? breakpoints;
+
+  /// Returns the number of columns to use for the given [breakpoint].
   int getColumns(Breakpoint breakpoint) {
     Breakpoints breakpoints = this.breakpoints ?? Breakpoints();
     switch (breakpoint) {
@@ -24,9 +30,8 @@ class ResponsiveColumn extends StatefulWidget {
       case Breakpoint.xxl:
         return breakpoints.colXxl;
       default:
-        12;
+        return 12;
     }
-    return 12;
   }
 
   @override

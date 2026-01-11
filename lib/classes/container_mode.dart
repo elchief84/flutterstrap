@@ -1,14 +1,17 @@
 import 'breakpoint.dart';
 
-/// Define [ResponsiveContainer] layout mode
-/// container         use default layout width sizes (see [getContainerWidth] method)
-/// containerFluid    use layout width 100%
-enum ContainerMode { container, containerFluid }
+/// Defines the [ResponsiveContainer] layout mode.
+enum ContainerMode {
+  /// Uses fixed container widths for each breakpoint.
+  container,
+
+  /// Uses full-width layout at each breakpoint.
+  containerFluid
+}
 
 /// Helpers methods to get info about [ContainerModeHelper]
 class ContainerModeHelper {
-  /// Return width size [double] based on [Breakpoint]]
-  /// - Require [Breakpoint] to get related size
+  /// Returns the width size in pixels for the given [breakpoint].
   static double getContainerWidth(Breakpoint breakpoint) {
     switch (breakpoint) {
       case Breakpoint.xs:

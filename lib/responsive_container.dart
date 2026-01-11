@@ -3,20 +3,9 @@ import 'classes/breakpoint.dart';
 import 'classes/container_mode.dart';
 import 'responsive_column.dart';
 
-/// [ResponsiveContainer] Wrapper widget
-/// - Optional [ContainerMode] mode - default [ContainerMode.containerFluid]
-/// - Optional [int] layoutColumns - default 12
-/// - Optional [Color] color is the background color
-/// - Optional [MainAxisAlignment] mainAxisAlignment
-/// - Optional [CrossAxisAlignment] crossAxisAlignment
-/// - Required [List] children is the list of widget to render into layout
+/// A responsive layout container that arranges [ResponsiveColumn] children.
 class ResponsiveContainer extends StatefulWidget {
-  final ContainerMode? mode;
-  final int? layoutColumns;
-  final List<ResponsiveColumn> children;
-  final Color? color;
-  final MainAxisAlignment? mainAxisAlignment;
-  final CrossAxisAlignment? crossAxisAlignment;
+  /// Creates a responsive container.
   const ResponsiveContainer(
       {super.key,
       required this.children,
@@ -25,6 +14,24 @@ class ResponsiveContainer extends StatefulWidget {
       this.color,
       this.mainAxisAlignment = MainAxisAlignment.start,
       this.crossAxisAlignment = CrossAxisAlignment.start});
+
+  /// Layout mode for this container.
+  final ContainerMode? mode;
+
+  /// Total number of columns used to calculate sizes.
+  final int? layoutColumns;
+
+  /// Child columns to render in the grid.
+  final List<ResponsiveColumn> children;
+
+  /// Optional background color.
+  final Color? color;
+
+  /// Main axis alignment for each row.
+  final MainAxisAlignment? mainAxisAlignment;
+
+  /// Cross axis alignment for each row.
+  final CrossAxisAlignment? crossAxisAlignment;
 
   @override
   State<ResponsiveContainer> createState() => _ResponsiveContainerState();
@@ -37,7 +44,7 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
 
     double containerWidth = ContainerModeHelper.getContainerWidth(breakpoint);
 
-    /// Render children widgets in 100% width in case of [ContainerMode.containerFluid] or [Breakpoint.extraSmall]
+    /// Render children in full width for [ContainerMode.containerFluid] or xs.
     if (widget.mode == ContainerMode.containerFluid ||
         breakpoint == Breakpoint.xs) {
       return Row(
@@ -50,7 +57,7 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
       );
     }
 
-    /// Render children widgets in boxed container
+    /// Render children in a boxed container.
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -62,9 +69,7 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
     );
   }
 
-  /// Calculate needed rows to render children widgets
-  /// Required [Breakpoint] breakpoint
-  /// Required [double] containerWidth (as layout width size)
+  /// Calculates row layouts for the given [breakpoint] and [containerWidth].
   List<dynamic> buildRows(
       {required Breakpoint breakpoint, required double containerWidth}) {
     final rows = [];
@@ -74,17 +79,17 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
     for (var element in widget.children) {
       int cols = element.getColumns(breakpoint);
       if (rowSize == 0) {
-        /// insert without check if first element
+        /// Insert without check if first element.
         double widgetWidth =
             ((cols / widget.layoutColumns!) * containerWidth).floorToDouble();
         row.add({'size': widgetWidth, 'child': element});
         rowSize += widgetWidth;
       } else {
-        /// check row with
+        /// Check row width.
         double widgetWidth =
             ((cols / widget.layoutColumns!) * containerWidth).floorToDouble();
         if (rowSize + widgetWidth > containerWidth) {
-          /// create a new row
+          /// Create a new row.
           rows.add(row);
           row = [];
           rowSize = 0.0;
@@ -95,16 +100,14 @@ class _ResponsiveContainerState extends State<ResponsiveContainer> {
       }
     }
     if (row.isNotEmpty) {
-      /// add not completed row
+      /// Add the last row.
       rows.add(row);
     }
 
     return rows;
   }
 
-  /// Render children widgets
-  /// - Required [Breakpoint] breakpoint
-  /// - Optional [double] containerWidth (as layout width size) - if null use 100% layout width
+  /// Builds the widget tree for the given [breakpoint].
   Widget buildContent(
       {required Breakpoint breakpoint, double? containerWidth}) {
     return LayoutBuilder(

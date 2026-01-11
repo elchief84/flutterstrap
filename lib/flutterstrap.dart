@@ -1,3 +1,6 @@
+/// Flutterstrap UI exports for responsive layout widgets.
+library flutterstrap;
+
 export 'responsive_container.dart';
 export 'responsive_column.dart';
 export 'classes/breakpoint.dart';

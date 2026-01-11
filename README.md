@@ -1,7 +1,7 @@
 
-# Flutterstrap
+# Flutterstrap UI
 
-**Flutterstrap** is a package to create responsive layouts in flutter projects.
+**Flutterstrap UI** is a package to create responsive layouts in Flutter projects.
 Designed to handle responsive layouts in Flutter web projects, it works for any platform.
 
 **Inspired to [Bootstrap](https://getbootstrap.com) framework**
@@ -14,7 +14,7 @@ Follow these steps to use this package
 ### Add dependency
 
 ```yaml  
-flutterstrap_ui: ^1.0.0  
+flutterstrap_ui: ^1.0.1  
 ```  
 
 ### Add import package
@@ -49,7 +49,7 @@ Put this code in your project and learn how it works 😊
 
 #### ResponsiveContainer
 ResponsiveContainer is the basic layout element.
-Default grid system is setted to 12 columns but you can override cols number using **layoutColumns** parameter.
+The default grid system is set to 12 columns, but you can override the count using the **layoutColumns** parameter.
 You can also modify **mode** parameter to choose container width:
 * Use ContainerMode.container to set max-width at each responsive breakpoint;
 * Use ContainerMode.containerFluid set width at 100% at each breakpoints.
@@ -70,15 +70,15 @@ Default breakpoint sizes for every ResponsiveColumn are:
 | Extra Large			| xl 			| 3 		|
 | Extra extra Large 	| xxl 			| 3 		|
 
-Following describing breakpoints:
-| breakpoint 	| dimensions	|
-----------------|---------------|
-| xs 			| <576px		|
-| sm 			| ≥576px 		|
-| md 			| ≥768px 		|
-| lg 			| ≥992px 		|
-| xl 			| ≥1200px 		|
-| xxl 			| ≥1400px 		|
+Following describes breakpoints:
+| breakpoint | dimensions |
+|-----------|------------|
+| xs        | <576px     |
+| sm        | ≥576px     |
+| md        | ≥768px     |
+| lg        | ≥992px     |
+| xl        | ≥1200px    |
+| xxl       | ≥1400px    |
 
 ## Contributions
 All contributions are welcome!  
