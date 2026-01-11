@@ -78,8 +78,6 @@ class BreakpointHelper {
         return 4;
       case Breakpoint.xxl:
         return 5;
-      default:
-        return 0;
     }
   }
 }

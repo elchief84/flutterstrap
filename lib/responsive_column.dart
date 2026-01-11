@@ -29,8 +29,6 @@ class ResponsiveColumn extends StatefulWidget {
         return breakpoints.colXl;
       case Breakpoint.xxl:
         return breakpoints.colXxl;
-      default:
-        return 12;
     }
   }
 
